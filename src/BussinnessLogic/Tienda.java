@@ -7,8 +7,9 @@ import java.io.*;
 
 
 public class Tienda implements Serializable {
-
+  
     public static void main(String[] args)  {
+        /*
         File archivo = new File("Pedidos.txt");
         FileOutputStream salida = null;
         FileInputStream entrada = null;
@@ -66,7 +67,7 @@ public class Tienda implements Serializable {
             }
         }
 
-        /*
+      
          System.out.println("Bienvenido a SU TIENDA AMIGA");
          Scanner sc = new Scanner(System.in);
        
