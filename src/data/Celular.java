@@ -1,6 +1,8 @@
 package data;
 
-public class Celular {
+import java.io.Serializable;
+
+public class Celular implements Serializable {
 
     private static final int id_celular = 1;
     private int nSerie;
