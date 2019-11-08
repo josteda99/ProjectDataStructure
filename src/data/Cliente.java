@@ -9,12 +9,12 @@ public class Cliente implements Serializable {
     private String apellido;
     private String formaPago;
     private int precioPago;
-    private String nSerieCelular;
+    private int nSerieCelular;
 
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String nombre, String apellido, String formaPago, int precioPago, String nSerieCelular) {
+    public Cliente(int idCliente, String nombre, String apellido, String formaPago, int precioPago, int nSerieCelular) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -69,11 +69,11 @@ public class Cliente implements Serializable {
         return apellido;
     }
 
-    public String getnSerieCelular() {
+    public int getnSerieCelular() {
         return nSerieCelular;
     }
 
-    public void setnSerieCelular(String nSerieCelular) {
+    public void setnSerieCelular(int nSerieCelular) {
         this.nSerieCelular = nSerieCelular;
     }
 

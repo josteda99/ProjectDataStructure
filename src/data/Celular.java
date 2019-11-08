@@ -9,6 +9,7 @@ public class Celular implements Serializable {
     private String marca;
     private int precio;
     private int imei;
+    private String estado;
 
     public Celular() {
     }
@@ -29,11 +30,20 @@ public class Celular implements Serializable {
         this.precio = precio;
     }
 
-    public Celular(int nSerie, String marca, int precio, int imei) {
+    public Celular(int nSerie, String marca, int precio, int imei, String estado) {
         this.nSerie = nSerie;
         this.marca = marca;
         this.precio = precio;
         this.imei = imei;
+        this.estado = estado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public int getImei() {

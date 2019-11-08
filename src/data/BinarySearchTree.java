@@ -1,8 +1,9 @@
-package datastructure;
+package data;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class BinarySearchTree {
+public class BinarySearchTree implements Serializable {
 
     private Node root;
 
@@ -12,6 +13,10 @@ public class BinarySearchTree {
 
     public void insertBST(int num) {
         root = insert(num, root);
+    }
+
+    public void borrar() {
+        root = null;
     }
 
     public void preFix() {
@@ -120,8 +125,17 @@ public class BinarySearchTree {
         return p;
     }
 
-    public void removeBTS(int num) {
+    public boolean isEmpty() {
+        return (root == null);
+    }
+
+    public Boolean removeBTS(int num) {
         root = remove(num, root);
+        if (root.data == num) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Node remove(int num, Node p) {
@@ -151,7 +165,7 @@ public class BinarySearchTree {
         return p;
     }
 
-    private class Node {
+    private class Node implements Serializable {
 
         public Node left;
         public Node right;

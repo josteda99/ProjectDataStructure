@@ -5,8 +5,9 @@
  */
 package BussinnessLogic;
 
-import data.Celular;
-import data.Cliente;
+import data.*;
+
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +26,7 @@ import javax.swing.WindowConstants;
 public class IngresarCelular extends javax.swing.JFrame {
 
     public IngresarCelular() {
+
         initComponents();
     }
 
@@ -53,7 +55,7 @@ public class IngresarCelular extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnIngresar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("INGRESAR CELULAR");
 
@@ -112,7 +114,6 @@ public class IngresarCelular extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtNserie.setText("jTextField1");
         txtNserie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNserieActionPerformed(evt);
@@ -120,10 +121,6 @@ public class IngresarCelular extends javax.swing.JFrame {
         });
 
         cboxMarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Huawei", "Samsung", "Nokia", "Alcatel", "Motorola", "Honor", "LG", "Sony", "Xiaomi", "Lenovo", "Blu", "Apple", "ZTE", " " }));
-
-        txtPrecio.setText("jTextField2");
-
-        txtImei.setText("jTextField3");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -234,16 +231,26 @@ public class IngresarCelular extends javax.swing.JFrame {
         FileInputStream entrada = null;
         ObjectOutputStream writer = null;
         ObjectInputStream reader = null;
+
+        File archivo1 = new File("Arbol.txt");
+        FileOutputStream salida1 = null;
+        FileInputStream entrada1 = null;
+        ObjectOutputStream writer1 = null;
+        ObjectInputStream reader1 = null;
         Celular celular = null;
         //Queue<Cliente> pedidos = new ArrayDeque<Cliente>();
         ArrayList<Celular> inventario = new ArrayList<>();
+        BinarySearchTree BusInventario = new BinarySearchTree();
 
         try {
             System.out.println("Leyendo archivo");
             entrada = new FileInputStream(archivo);
             reader = new ObjectInputStream(entrada);
+            entrada1 = new FileInputStream(archivo1);
+            reader1 = new ObjectInputStream(entrada1);
 
             inventario = (ArrayList<Celular>) reader.readObject();
+            BusInventario = (BinarySearchTree) reader1.readObject();
             //inventario.clear();
             for (Celular variable : inventario) {
                 System.out.println(variable.toString());
@@ -271,12 +278,17 @@ public class IngresarCelular extends javax.swing.JFrame {
             salida = new FileOutputStream(archivo);
             writer = new ObjectOutputStream(salida);
 
+            archivo1.createNewFile();
+            salida1 = new FileOutputStream(archivo1);
+            writer1 = new ObjectOutputStream(salida1);
             //cliente = new Cliente(1019283567, "Johan", "Daza", "efectivo", 300000, "h2grhdbs");
             // pedidos.add(cliente);
             //System.out.println(pedidos.element().toString());
-            celular = new Celular(nSerie, marca, precio, imei);
+            celular = new Celular(nSerie, marca, precio, imei, "Disponible");
             inventario.add(celular);
+            BusInventario.insertBST(nSerie);
             writer.writeObject(inventario);
+            writer1.writeObject(BusInventario);
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } finally {
@@ -327,6 +339,7 @@ public class IngresarCelular extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
