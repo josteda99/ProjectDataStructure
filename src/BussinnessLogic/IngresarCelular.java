@@ -255,6 +255,8 @@ public class IngresarCelular extends javax.swing.JFrame {
             for (Celular variable : inventario) {
                 System.out.println(variable.toString());
             }
+            
+           // BusInventario.
 
         } catch (IOException | ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
@@ -289,6 +291,7 @@ public class IngresarCelular extends javax.swing.JFrame {
             BusInventario.insertBST(nSerie);
             writer.writeObject(inventario);
             writer1.writeObject(BusInventario);
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } finally {

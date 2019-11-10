@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  *
@@ -187,16 +188,39 @@ public class BuscarArbol extends javax.swing.JFrame {
         Celular celular = null;
         BinarySearchTree BusInventario = new BinarySearchTree();
 
+        File archivo = new File("InventarioArray.txt");
+        FileOutputStream salida = null;
+        FileInputStream entrada = null;
+        ObjectOutputStream writer = null;
+        ObjectInputStream reader = null;
+        ArrayList<Celular> inventario = new ArrayList<>();
+
         try {
             System.out.println("Leyendo archivo");
-
+            entrada = new FileInputStream(archivo);
+            reader = new ObjectInputStream(entrada);
             entrada1 = new FileInputStream(archivo1);
             reader1 = new ObjectInputStream(entrada1);
-
             BusInventario = (BinarySearchTree) reader1.readObject();
-            BusInventario.borrar();
+            //BusInventario.borrar();
+            inventario = (ArrayList<Celular>) reader.readObject();
             int a = Integer.parseInt(txtBuscarSerie.getText());
-            
+            boolean color = false;
+            for (int i = 0; i < inventario.size(); i++) {
+                if (inventario.get(i).getnSerie() == a) {
+                    color = true;
+                    i = inventario.size() - 1;
+                }
+            }
+
+            if (color == true) {
+                pnEstado.setBackground(Color.green);
+            } else {
+                pnEstado.setBackground(Color.red);
+            }
+            /*
+             
+
              boolean estado = BusInventario.removeBTS(a);
 
              if (estado == true) {
@@ -205,7 +229,7 @@ public class BuscarArbol extends javax.swing.JFrame {
              } else {
              pnEstado.setBackground(Color.red);
              }
-             
+             */
         } catch (IOException | ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
         } finally {

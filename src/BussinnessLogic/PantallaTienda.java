@@ -49,9 +49,11 @@ public class PantallaTienda extends javax.swing.JFrame {
             pedidos = (ArrayList<Cliente>) reader.readObject();
             inventario = (ArrayList<Celular>) reader1.readObject();
             despachador = (Deque<Cliente>) reader2.readObject();
-            //pedidos.clear();
-            //inventario.clear();
-            //despachador.clear();
+
+            pedidos.clear();
+            inventario.clear();
+            despachador.clear();
+
             setDatosListaClientes(pedidos);
             // for (Cliente variable : pedidos) {
             //    System.out.println(variable.toString());
@@ -146,6 +148,7 @@ public class PantallaTienda extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnDespachar = new javax.swing.JButton();
+        btnInsertarInventario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -357,6 +360,13 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        btnInsertarInventario.setText("Insertar Inventario");
+        btnInsertarInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarInventarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -368,7 +378,8 @@ public class PantallaTienda extends javax.swing.JFrame {
                     .addComponent(btnReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDespachar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDespachar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInsertarInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -381,6 +392,8 @@ public class PantallaTienda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDespachar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInsertarInventario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReiniciar)
@@ -585,8 +598,6 @@ public class PantallaTienda extends javax.swing.JFrame {
             inventario = (ArrayList<Celular>) reader1.readObject();
             despachador = (Deque<Cliente>) reader2.readObject();
 
-            //pedidos.clear();
-            //inventario.clear();
         } catch (IOException | ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
         } finally {
@@ -746,6 +757,107 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDespacharActionPerformed
+
+    private void btnInsertarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarInventarioActionPerformed
+        File archivo = new File("InventarioArray.txt");
+        FileOutputStream salida = null;
+        FileInputStream entrada = null;
+        ObjectOutputStream writer = null;
+        ObjectInputStream reader = null;
+
+        File archivo1 = new File("Arbol.txt");
+        FileOutputStream salida1 = null;
+        FileInputStream entrada1 = null;
+        ObjectOutputStream writer1 = null;
+        ObjectInputStream reader1 = null;
+        Celular celular = null;
+        //Queue<Cliente> pedidos = new ArrayDeque<Cliente>();
+        ArrayList<Celular> inventario = new ArrayList<>();
+        BinarySearchTree BusInventario = new BinarySearchTree();
+
+        try {
+            System.out.println("Leyendo archivo");
+            entrada = new FileInputStream(archivo);
+            reader = new ObjectInputStream(entrada);
+            entrada1 = new FileInputStream(archivo1);
+            reader1 = new ObjectInputStream(entrada1);
+
+            inventario = (ArrayList<Celular>) reader.readObject();
+            BusInventario = (BinarySearchTree) reader1.readObject();
+            //inventario.clear();
+            for (Celular variable : inventario) {
+                System.out.println(variable.toString());
+            }
+
+            // BusInventario.
+        } catch (IOException | ClassNotFoundException ex) {
+            System.err.println(ex.getMessage());
+        } finally {
+            if (entrada != null) {
+                try {
+                    entrada.close();
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException ex) {
+                    //Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("no se pudo");
+                }
+            }
+        }
+        //--------------Escritura de archivo--------------------
+        try {
+            System.out.println("Escribiendo en archivo");
+            archivo.createNewFile();
+            salida = new FileOutputStream(archivo);
+            writer = new ObjectOutputStream(salida);
+
+            archivo1.createNewFile();
+            salida1 = new FileOutputStream(archivo1);
+            writer1 = new ObjectOutputStream(salida1);
+
+            Scanner sc = new Scanner(System.in);
+            String[] marcas = {"Huawei", "Samsung", "Nokia", "Alcatel", "Motorola",
+                "Honor", "LG", "Sony", "Xiaomi", "Lenovo", "Blu", "Apple", "ZTE"};
+            Random mar = new Random();
+            System.out.println("Inserte en rango");
+            int rango = sc.nextInt();
+            for (int i = 0; i < rango; i++) {
+                // System.out.println("nserie");
+                int nSerie = i + 1;
+                // System.out.println("marca");
+                //sc.nextLine();
+                int pos = mar.nextInt(13);
+                String marca = marcas[pos];
+                // System.out.println("price");
+                int precio = mar.nextInt(1000000) + 1;
+                //  System.out.println("imei");
+                int imei = 100000000 - i;
+                // System.out.println("insertado mi chino");
+
+                celular = new Celular(nSerie, marca, precio, imei, "Disponible");
+                inventario.add(celular);
+                //BusInventario.insertBST(nSerie);
+            }
+            System.out.println("Terminado");
+            writer.writeObject(inventario);
+            //writer1.writeObject(BusInventario);
+            System.exit(0);
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        } finally {
+            if (salida != null) {
+                try {
+                    salida.close();
+                    if (writer != null) {
+                        writer.close();
+                    }
+                } catch (IOException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_btnInsertarInventarioActionPerformed
 
     public void reiniciarSistema(ArrayList<Celular> inventario, ArrayList<Cliente> pedidos) {
         File archivo = new File("ClientesArray.txt");
@@ -1029,6 +1141,7 @@ public class PantallaTienda extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDespachar;
+    private javax.swing.JButton btnInsertarInventario;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JComboBox cbFormaPago;
     private javax.swing.JInternalFrame jInternalFrame2Admin;

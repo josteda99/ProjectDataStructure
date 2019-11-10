@@ -340,6 +340,7 @@
                           <Component id="btnActualizar" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnBuscar" max="32767" attributes="0"/>
                           <Component id="btnDespachar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnInsertarInventario" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -355,6 +356,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDespachar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnInsertarInventario" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnReiniciar" min="-2" max="-2" attributes="0"/>
@@ -402,6 +405,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDespacharActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnInsertarInventario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Insertar Inventario"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertarInventarioActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
