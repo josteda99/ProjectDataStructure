@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import data.*;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class PantallaTienda extends javax.swing.JFrame {
 
@@ -50,10 +51,6 @@ public class PantallaTienda extends javax.swing.JFrame {
             inventario = (ArrayList<Celular>) reader1.readObject();
             despachador = (Deque<Cliente>) reader2.readObject();
 
-            pedidos.clear();
-            inventario.clear();
-            despachador.clear();
-
             setDatosListaClientes(pedidos);
             // for (Cliente variable : pedidos) {
             //    System.out.println(variable.toString());
@@ -65,6 +62,17 @@ public class PantallaTienda extends javax.swing.JFrame {
             setDatosCatalogo(inventario);
             for (Cliente variable : despachador) {
                 System.out.println(variable.toString());
+            }
+            int ganancias = 0;
+            int may = 0;
+            for (int i = 0; i < pedidos.size(); i++) {
+                ganancias = ganancias + pedidos.get(i).getPrecioPago();
+            }
+            
+            if (ganancias > may) {
+                may = ganancias;
+                String txtDin = Integer.toString(may);
+                txtDinero.setText(txtDin);
             }
 
         } catch (IOException | ClassNotFoundException ex) {
@@ -149,6 +157,9 @@ public class PantallaTienda extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnDespachar = new javax.swing.JButton();
         btnInsertarInventario = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txtDinero = new javax.swing.JLabel();
+        clieBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -367,6 +378,18 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Ganancias:");
+
+        txtDinero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtDinero.setText("0");
+
+        clieBtn.setText("Buscar BD Clientes");
+        clieBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clieBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -374,12 +397,17 @@ public class PantallaTienda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clieBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbtnIngresarCecular, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(btnReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDespachar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnInsertarInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnInsertarInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -391,6 +419,12 @@ public class PantallaTienda extends javax.swing.JFrame {
                 .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDespachar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtDinero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(clieBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnInsertarInventario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -699,13 +733,16 @@ public class PantallaTienda extends javax.swing.JFrame {
             despachador = (Deque<Cliente>) reader2.readObject();
             despachador.remove();
             int eliminador = pedidos.get(0).getnSerieCelular();
+
             Boolean bandera = false;
             int i = 0;
             while (bandera != true) {
+                System.out.println(bandera);
                 if (inventario.get(i).getnSerie() == eliminador) {
                     bandera = true;
                     inventario.remove(i);
                 }
+                i++;
             }
             pedidos.remove(0);
 
@@ -858,6 +895,10 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnInsertarInventarioActionPerformed
+
+    private void clieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clieBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clieBtnActionPerformed
 
     public void reiniciarSistema(ArrayList<Celular> inventario, ArrayList<Cliente> pedidos) {
         File archivo = new File("ClientesArray.txt");
@@ -1121,6 +1162,7 @@ public class PantallaTienda extends javax.swing.JFrame {
         }
 
         jTInventario.setModel(dtmInventario);
+
     }
 
     private void setModel() {
@@ -1144,6 +1186,7 @@ public class PantallaTienda extends javax.swing.JFrame {
     private javax.swing.JButton btnInsertarInventario;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JComboBox cbFormaPago;
+    private javax.swing.JButton clieBtn;
     private javax.swing.JInternalFrame jInternalFrame2Admin;
     private javax.swing.JInternalFrame jInternalFrameCliente;
     private javax.swing.JLabel jLabel1;
@@ -1152,6 +1195,7 @@ public class PantallaTienda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -1172,6 +1216,7 @@ public class PantallaTienda extends javax.swing.JFrame {
     private javax.swing.JLabel jlClientes;
     private javax.swing.JLabel jlInventario;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JLabel txtDinero;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
