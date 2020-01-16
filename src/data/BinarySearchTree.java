@@ -104,7 +104,7 @@ public class BinarySearchTree implements Serializable {
                 }
             }
         }
-        return p; 
+        return p;
     }
 
     private Node findMin(Node p) {
@@ -164,15 +164,15 @@ public class BinarySearchTree implements Serializable {
         }
         return p;
     }
-    
-    public boolean find(int id){
+
+    public boolean find(int id) {
         Node act = root;
-        while(act!=null){
-            if(act.data==id){
+        while (act != null) {
+            if (act.data == id) {
                 return true;
-            }else if(act.data > id){
+            } else if (act.data > id) {
                 act = act.left;
-            }else{
+            } else {
                 act = act.right;
             }
         }
@@ -194,7 +194,5 @@ public class BinarySearchTree implements Serializable {
             right = null;
             this.data = data;
         }
-
     }
-
 }

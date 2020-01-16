@@ -17,6 +17,7 @@ public class PantallaTienda extends javax.swing.JFrame {
     Celular celular = null;
     ArrayList<Celular> inventario = new ArrayList<>();
     Queue<Cliente> despachador = new ArrayDeque<>();
+    BinarySearchTree baseClientes = new BinarySearchTree();
 
     public PantallaTienda() {
 
@@ -26,30 +27,38 @@ public class PantallaTienda extends javax.swing.JFrame {
         File archivo = new File("ClientesArray.txt");
         File archivo1 = new File("InventarioArray.txt");
         File archivo2 = new File("Despachador.txt");
+        File archivo3 = new File("BaseClientes.txt");
         FileOutputStream salida = null;
         FileInputStream entrada = null;
         FileOutputStream salida1 = null;
         FileInputStream entrada1 = null;
         FileOutputStream salida2 = null;
         FileInputStream entrada2 = null;
+        FileOutputStream salida3 = null;
+        FileInputStream entrada3 = null;
         ObjectOutputStream writer = null;
         ObjectOutputStream writer1 = null;
         ObjectOutputStream writer2 = null;
+        ObjectOutputStream writer3 = null;
         ObjectInputStream reader = null;
         ObjectInputStream reader1 = null;
         ObjectInputStream reader2 = null;
+        ObjectInputStream reader3 = null;
 
         try {
             System.out.println("Leyendo archivo");
             entrada = new FileInputStream(archivo);
             entrada1 = new FileInputStream(archivo1);
             entrada2 = new FileInputStream(archivo2);
+            entrada3 = new FileInputStream(archivo3);
             reader = new ObjectInputStream(entrada);
             reader1 = new ObjectInputStream(entrada1);
             reader2 = new ObjectInputStream(entrada2);
+            reader3 = new ObjectInputStream(entrada3);
             pedidos = (ArrayList<Cliente>) reader.readObject();
             inventario = (ArrayList<Celular>) reader1.readObject();
             despachador = (Deque<Cliente>) reader2.readObject();
+            baseClientes = (BinarySearchTree) reader3.readObject();
 
             setDatosListaClientes(pedidos);
             // for (Cliente variable : pedidos) {
@@ -68,7 +77,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             for (int i = 0; i < pedidos.size(); i++) {
                 ganancias = ganancias + pedidos.get(i).getPrecioPago();
             }
-            
+
             if (ganancias > may) {
                 may = ganancias;
                 String txtDin = Integer.toString(may);
@@ -104,12 +113,17 @@ public class PantallaTienda extends javax.swing.JFrame {
             archivo2.createNewFile();
             salida2 = new FileOutputStream(archivo2);
             writer2 = new ObjectOutputStream(salida2);
+
+            archivo3.createNewFile();
+            salida3 = new FileOutputStream(archivo3);
+            writer3 = new ObjectOutputStream(salida3);
             //cliente = new Cliente(1019283567, "Johan", "Daza", "efectivo", 300000, "h2grhdbs");
             // pedidos.add(cliente);
             //System.out.println(pedidos.element().toString());
             writer.writeObject(pedidos);
             writer1.writeObject(inventario);
             writer2.writeObject(despachador);
+            writer3.writeObject(baseClientes);
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } finally {
@@ -607,30 +621,38 @@ public class PantallaTienda extends javax.swing.JFrame {
         File archivo = new File("ClientesArray.txt");
         File archivo1 = new File("InventarioArray.txt");
         File archivo2 = new File("Despachador.txt");
+        File archivo3 = new File("BaseClientes.txt");
         FileOutputStream salida = null;
         FileInputStream entrada = null;
         FileOutputStream salida1 = null;
         FileInputStream entrada1 = null;
         FileOutputStream salida2 = null;
         FileInputStream entrada2 = null;
+        FileOutputStream salida3 = null;
+        FileInputStream entrada3 = null;
         ObjectOutputStream writer = null;
         ObjectOutputStream writer1 = null;
         ObjectOutputStream writer2 = null;
+        ObjectOutputStream writer3 = null;
         ObjectInputStream reader = null;
         ObjectInputStream reader1 = null;
         ObjectInputStream reader2 = null;
+        ObjectInputStream reader3 = null;
 
         try {
             System.out.println("Leyendo archivo");
             entrada = new FileInputStream(archivo);
             entrada1 = new FileInputStream(archivo1);
             entrada2 = new FileInputStream(archivo2);
+            entrada3 = new FileInputStream(archivo3);
             reader = new ObjectInputStream(entrada);
             reader1 = new ObjectInputStream(entrada1);
             reader2 = new ObjectInputStream(entrada2);
+            reader3 = new ObjectInputStream(entrada3);
             pedidos = (ArrayList<Cliente>) reader.readObject();
             inventario = (ArrayList<Celular>) reader1.readObject();
             despachador = (Deque<Cliente>) reader2.readObject();
+            baseClientes = (BinarySearchTree) reader3.readObject();
 
         } catch (IOException | ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
@@ -662,6 +684,10 @@ public class PantallaTienda extends javax.swing.JFrame {
             salida2 = new FileOutputStream(archivo2);
             writer2 = new ObjectOutputStream(salida2);
 
+            archivo3.createNewFile();
+            salida3 = new FileOutputStream(archivo3);
+            writer3 = new ObjectOutputStream(salida3);
+
             int i = 0;
             boolean bandera = false;
             while (bandera != true) {
@@ -677,6 +703,8 @@ public class PantallaTienda extends javax.swing.JFrame {
                 pedidos.add(cliente);
                 despachador.add(cliente);
                 inventario.get(i).setEstado("Reservado");
+                baseClientes.insertBST(id);
+                baseClientes.inFix();
                 JOptionPane.showMessageDialog(null, "Reserva Exitosa", "Reserva", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "El equipo ya esta reservado, porfavor intentelo de nuevo", "Error", JOptionPane.WARNING_MESSAGE);
@@ -685,6 +713,8 @@ public class PantallaTienda extends javax.swing.JFrame {
             writer.writeObject(pedidos);
             writer1.writeObject(inventario);
             writer2.writeObject(despachador);
+            writer3.writeObject(baseClientes);
+
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } finally {
@@ -897,7 +927,8 @@ public class PantallaTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInsertarInventarioActionPerformed
 
     private void clieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clieBtnActionPerformed
-        // TODO add your handling code here:
+        //baseClientes.inFix();
+        new BuscarCliente().setVisible(true);
     }//GEN-LAST:event_clieBtnActionPerformed
 
     public void reiniciarSistema(ArrayList<Celular> inventario, ArrayList<Cliente> pedidos) {
