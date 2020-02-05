@@ -23,7 +23,7 @@ public class PantallaTienda extends javax.swing.JFrame {
 
         initComponents();
         setModel();
-
+        
         File archivo = new File("ClientesArray.txt");
         File archivo1 = new File("InventarioArray.txt");
         File archivo2 = new File("Despachador.txt");
@@ -174,6 +174,7 @@ public class PantallaTienda extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtDinero = new javax.swing.JLabel();
         clieBtn = new javax.swing.JButton();
+        adminBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -186,9 +187,15 @@ public class PantallaTienda extends javax.swing.JFrame {
         jlInventario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 204, 255));
 
+        jInternalFrameCliente.setBackground(new java.awt.Color(104, 92, 121));
+        jInternalFrameCliente.setForeground(new java.awt.Color(255, 0, 51));
         jInternalFrameCliente.setVisible(true);
 
+        jPanel6.setBackground(new java.awt.Color(239, 237, 242));
+
+        jLabel5.setForeground(new java.awt.Color(25, 52, 65));
         jLabel5.setText("EQUIPOS DISPONIBLES");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -196,17 +203,22 @@ public class PantallaTienda extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(74, 74, 74)
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(jLabel5))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel7.setBackground(new java.awt.Color(252, 255, 245));
+
+        jTCatalogo.setBackground(new java.awt.Color(252, 255, 245));
+        jTCatalogo.setForeground(new java.awt.Color(25, 52, 65));
         jTCatalogo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -231,12 +243,19 @@ public class PantallaTienda extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
 
+        jPanel9.setBackground(new java.awt.Color(101, 100, 101));
+
+        jLabel1.setBackground(new java.awt.Color(239, 237, 242));
+        jLabel1.setForeground(new java.awt.Color(239, 237, 242));
         jLabel1.setText("ID");
 
+        jLabel2.setForeground(new java.awt.Color(239, 237, 242));
         jLabel2.setText("Forma Pago");
 
+        jLabel3.setForeground(new java.awt.Color(239, 237, 242));
         jLabel3.setText("Nombre");
 
+        jLabel4.setForeground(new java.awt.Color(239, 237, 242));
         jLabel4.setText("Apellido");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -266,6 +285,16 @@ public class PantallaTienda extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel10.setBackground(new java.awt.Color(239, 237, 242));
+
+        txtId.setBackground(new java.awt.Color(239, 237, 242));
+        txtId.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtNombre.setBackground(new java.awt.Color(239, 237, 242));
+
+        txtApellido.setBackground(new java.awt.Color(239, 237, 242));
+
+        cbFormaPago.setBackground(new java.awt.Color(239, 237, 242));
         cbFormaPago.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Efectivo", "Tarjeta de Credito" }));
 
         Comprar.setText("Comprar");
@@ -275,6 +304,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setForeground(new java.awt.Color(25, 52, 65));
         jLabel6.setText("INFORMACION");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -350,6 +380,9 @@ public class PantallaTienda extends javax.swing.JFrame {
 
         jInternalFrame2Admin.setVisible(true);
 
+        jPanel1.setBackground(new java.awt.Color(101, 100, 101));
+
+        jbtnIngresarCecular.setBackground(new java.awt.Color(227, 225, 229));
         jbtnIngresarCecular.setText("Ingresar Equipo");
         jbtnIngresarCecular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,6 +390,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        btnReiniciar.setBackground(new java.awt.Color(227, 225, 229));
         btnReiniciar.setText("Reiniciar \nSistema"); // NOI18N
         btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,6 +398,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        btnActualizar.setBackground(new java.awt.Color(227, 225, 229));
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -371,6 +406,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setBackground(new java.awt.Color(227, 225, 229));
         btnBuscar.setText("Buscar Inventario");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,6 +414,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        btnDespachar.setBackground(new java.awt.Color(227, 225, 229));
         btnDespachar.setText("Despachar");
         btnDespachar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,6 +422,7 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        btnInsertarInventario.setBackground(new java.awt.Color(227, 225, 229));
         btnInsertarInventario.setText("Insertar Inventario");
         btnInsertarInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,15 +430,28 @@ public class PantallaTienda extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setBackground(new java.awt.Color(227, 225, 229));
+        jLabel7.setForeground(new java.awt.Color(227, 225, 229));
         jLabel7.setText("Ganancias:");
 
+        txtDinero.setBackground(new java.awt.Color(227, 225, 229));
+        txtDinero.setForeground(new java.awt.Color(227, 225, 229));
         txtDinero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtDinero.setText("0");
 
+        clieBtn.setBackground(new java.awt.Color(227, 225, 229));
         clieBtn.setText("Buscar BD Clientes");
         clieBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clieBtnActionPerformed(evt);
+            }
+        });
+
+        adminBtn.setBackground(new java.awt.Color(227, 225, 229));
+        adminBtn.setText("Tabla Admins");
+        adminBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminBtnActionPerformed(evt);
             }
         });
 
@@ -421,13 +472,14 @@ public class PantallaTienda extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(adminBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addComponent(jbtnIngresarCecular)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
@@ -439,6 +491,8 @@ public class PantallaTienda extends javax.swing.JFrame {
                     .addComponent(txtDinero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clieBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnInsertarInventario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -448,6 +502,9 @@ public class PantallaTienda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel2.setBackground(new java.awt.Color(239, 237, 242));
+
+        jTClientes.setBackground(new java.awt.Color(239, 237, 242));
         jTClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -497,6 +554,9 @@ public class PantallaTienda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBackground(new java.awt.Color(239, 237, 242));
+
+        jTInventario.setBackground(new java.awt.Color(239, 237, 242));
         jTInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -601,7 +661,8 @@ public class PantallaTienda extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         //setDatosListaClientes(pedidos);
         //setDatosListaInventario(inventario);
-        actualizadorInventario(inventario);
+        //actualizadorInventario(inventario);
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -931,6 +992,10 @@ public class PantallaTienda extends javax.swing.JFrame {
         new BuscarCliente().setVisible(true);
     }//GEN-LAST:event_clieBtnActionPerformed
 
+    private void adminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminBtnActionPerformed
+         new Admins().setVisible(true);
+    }//GEN-LAST:event_adminBtnActionPerformed
+
     public void reiniciarSistema(ArrayList<Celular> inventario, ArrayList<Cliente> pedidos) {
         File archivo = new File("ClientesArray.txt");
         File archivo1 = new File("InventarioArray.txt");
@@ -1211,6 +1276,7 @@ public class PantallaTienda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Comprar;
+    private javax.swing.JButton adminBtn;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDespachar;

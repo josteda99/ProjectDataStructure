@@ -125,7 +125,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="DIgite el Numero de sere"/>
+                <Property name="text" type="java.lang.String" value="Digite el Numero de serie"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBuscarSerie">
@@ -151,7 +151,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="pnEstado" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                      <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

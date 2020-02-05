@@ -51,7 +51,7 @@ public class BuscarArbol extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel2.setText("DIgite el Numero de sere");
+        jLabel2.setText("Digite el Numero de serie");
 
         txtBuscarSerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +113,7 @@ public class BuscarArbol extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(pnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
