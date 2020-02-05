@@ -154,7 +154,8 @@ public class Admins extends javax.swing.JFrame {
             System.out.println("Ingrese el numero de trabajadores");
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("1 para insertar, 2 para borrar");
+            System.out.println("1 para insertar, 2 para borrar, cualquier otro pasar");
+
             int opc = sc.nextInt();
 
             if (opc == 1) {
@@ -166,16 +167,20 @@ public class Admins extends javax.swing.JFrame {
                     Trabajador t = new Trabajador(i, "pedro", cargos[car]);
                     trabajadores.add(t);
                     admins.insert(t.id);
+
                 }
-            } else if (opc == 2) {
+
+            }
+
+            if (opc == 2) {
                 admins.clear();
                 trabajadores.clear();
-            } else {
-                admins.printHash();
+
             }
 
             wri.writeObject(admins);
             wri1.writeObject(trabajadores);
+            //System.exit(0);
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } finally {
@@ -209,7 +214,7 @@ public class Admins extends javax.swing.JFrame {
         txtInfo = new javax.swing.JTextArea();
         btnBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("INFORMACION");
 

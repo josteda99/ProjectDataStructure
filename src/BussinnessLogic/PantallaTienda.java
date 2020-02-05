@@ -448,7 +448,7 @@ public class PantallaTienda extends javax.swing.JFrame {
         });
 
         adminBtn.setBackground(new java.awt.Color(227, 225, 229));
-        adminBtn.setText("Tabla Admins");
+        adminBtn.setText("Trabajadores");
         adminBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminBtnActionPerformed(evt);

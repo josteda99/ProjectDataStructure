@@ -571,7 +571,7 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e5" green="e1" red="e3" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Tabla Admins"/>
+                <Property name="text" type="java.lang.String" value="Trabajadores"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminBtnActionPerformed"/>
